@@ -73,11 +73,6 @@ public abstract class DQEBase<S extends SQLGlobalState<?, ?>> {
         new SQLQueryAdapter(dropColumnUpdated).execute(state);
     }
 
-    // This interface is to record Error code
-    public interface UpdateErrorCodes {
-
-    }
-
     public interface ErrorCodeStrategy {
         Set<Integer> getUpdateSpecificErrorCodes();
 

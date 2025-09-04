@@ -12,6 +12,7 @@ import sqlancer.common.oracle.TLPWhereOracle;
 import sqlancer.common.oracle.TestOracle;
 import sqlancer.common.query.ExpectedErrors;
 import sqlancer.common.query.SQLancerResultSet;
+import sqlancer.tidb.oracle.TiDBDQEOracle;
 import sqlancer.tidb.oracle.TiDBDQPOracle;
 import sqlancer.tidb.oracle.TiDBTLPHavingOracle;
 
@@ -72,6 +73,13 @@ public enum TiDBOracleFactory implements OracleFactory<TiDBProvider.TiDBGlobalSt
                 throws SQLException {
             return new TiDBDQPOracle(globalState);
         }
-    };
+    },
+    DQE {
+        @Override
+        public TestOracle<TiDBProvider.TiDBGlobalState> create(TiDBProvider.TiDBGlobalState globalState)
+                throws SQLException {
+            return new TiDBDQEOracle(globalState);
+        }
+    }
 
 }
